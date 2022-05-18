@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSnapshot } from "valtio";
 import { MeetingProvider } from "@videosdk.live/react-sdk";
 import Box from "@mui/material/Box";
@@ -12,8 +12,8 @@ import Meeting from "../components/Meeting";
 
 const JoinMeeting = () => {
   const [loading, setLoading] = useState(true);
-  const [validMeeting, setValidMeeting] = useState(false);
-
+  const navigate = useNavigate();
+  const { meeting, ui } = useSnapshot(store);
   const {
     camOn,
     micOn,
@@ -26,7 +26,7 @@ const JoinMeeting = () => {
     setMeetingId,
     setToken,
     setStarted,
-  } = useSnapshot(store);
+  } = meeting;
 
   const { id } = useParams();
   useEffect(() => {
@@ -39,22 +39,25 @@ const JoinMeeting = () => {
     try {
       const token = await getToken();
       const valid = await validateMeeting({ meetingId, token });
-      if (!valid) throw new Error("Invalid Meeting Id");
+      if (!valid) ui.setInvalidMeetingDialog(true);
+      setToken(token);
       setMeetingId(meetingId);
-      setValidMeeting(true);
     } catch (error) {
-      console.log("error", error);
     } finally {
       setLoading(false);
     }
   };
 
   const onMeetingLeave = () => {
-    setToken("");
-    setMeetingId("");
     setCam(false);
     setMic(false);
     setStarted(false);
+  };
+
+  const onBack = () => {
+    setToken("");
+    setMeetingId("");
+    navigate({ pathname: `/meeting` });
   };
 
   if (loading)
@@ -68,7 +71,6 @@ const JoinMeeting = () => {
         <CircularProgress />
       </Box>
     );
-  if (!validMeeting) return <div>Invalid Meeting ID</div>;
 
   return started ? (
     <MeetingProvider
@@ -85,7 +87,7 @@ const JoinMeeting = () => {
       <Meeting onMeetingLeave={onMeetingLeave} />
     </MeetingProvider>
   ) : (
-    <Join />
+    <Join onBack={onBack} />
   );
 };
 

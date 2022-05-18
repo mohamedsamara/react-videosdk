@@ -18,8 +18,8 @@ const MEETING_BANNER = `${process.env.PUBLIC_URL}/meeting.svg`;
 const NewMeeting = () => {
   const [meetingIdError, setMeetingIdError] = useState(false);
   const navigate = useNavigate();
-
-  const { meetingId, setMeetingId, setToken } = useSnapshot(store);
+  const { meeting, ui } = useSnapshot(store);
+  const { meetingId, setMeetingId, setToken } = meeting;
 
   const onNewMeeting = async () => {
     const token = await getToken();
@@ -32,11 +32,11 @@ const NewMeeting = () => {
   const joinMeeting = async (meetingId: string) => {
     const token = await getToken();
     const valid = await validateMeeting({ meetingId, token });
-    if (valid) {
-      setToken(token);
-      setMeetingId(meetingId);
-      navigate({ pathname: `/meeting/${meetingId}` });
-    } else alert("Invalid Meeting Id");
+    if (!valid) return ui.setInvalidMeetingDialog(true);
+
+    setToken(token);
+    setMeetingId(meetingId);
+    navigate({ pathname: `/meeting/${meetingId}` });
   };
 
   const onJoin = (e: any) => {

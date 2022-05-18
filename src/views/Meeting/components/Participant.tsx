@@ -34,7 +34,7 @@ const Participant = (props: ParticipantProps) => {
     onStreamDisabled,
   });
 
-  console.log("isMainParticipant", isMainParticipant);
+  // console.log("isMainParticipant", isMainParticipant);
 
   useEffect(() => {
     if (webcamRef.current) {
@@ -161,36 +161,6 @@ const Participant = (props: ParticipantProps) => {
               left: 10,
             }}
           >
-            <button
-              className="button blue"
-              style={
-                {
-                  // height: 50,
-                  // width: 200,
-                }
-              }
-              onClick={async () => {
-                const meetingId = prompt(
-                  `Please enter meeting id where you want to switch ${displayName}`
-                );
-                const token = await getToken();
-                if (meetingId && token) {
-                  try {
-                    await switchTo({
-                      meetingId,
-                      payload: "Im Switching",
-                      token: token,
-                    });
-                  } catch (e) {
-                    console.log("swithc To Error", e);
-                  }
-                } else {
-                  alert("Empty meetingId!");
-                }
-              }}
-            >
-              Switch Participant
-            </button>
             <p>{displayName}</p>
           </div>
         </div>
