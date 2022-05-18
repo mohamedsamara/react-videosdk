@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMeeting } from "@videosdk.live/react-sdk";
 
-import ExternalVideo from "../components/ExternalVideo";
-import Participants from "../components/Participants";
-import Chat from "../components/Chat";
+import ExternalVideo from "./ExternalVideo";
+import Participants from "./Participants";
+import Chat from "./Chat";
 
 interface MeetingProps {
   onMeetingLeave: () => void;

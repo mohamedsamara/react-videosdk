@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+// import { StoreProvider } from "easy-peasy";
 import { ThemeProvider } from "@mui/material/styles";
 
-import App from "./components/App";
+import "./styles/index.css";
+// import store from "./lib/store";
 import theme from "./utils/theme";
 import reportWebVitals from "./reportWebVitals";
+import App from "./components/App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +16,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      {/* <StoreProvider store={store}> */}
       <App />
+      {/* </StoreProvider> */}
     </ThemeProvider>
   </React.StrictMode>
 );
