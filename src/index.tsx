@@ -1,26 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-// import { StoreProvider } from "easy-peasy";
+import ReactDOM from "react-dom";
 import { ThemeProvider } from "@mui/material/styles";
 
 import "./styles/index.css";
-// import store from "./lib/store";
 import theme from "./utils/theme";
 import reportWebVitals from "./reportWebVitals";
 import App from "./components/App";
+// import App from "./app";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = document.getElementById("root") as HTMLElement;
 
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      {/* <StoreProvider store={store}> */}
       <App />
-      {/* </StoreProvider> */}
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  root
 );
 
 // If you want to start measuring performance in your app, pass a function

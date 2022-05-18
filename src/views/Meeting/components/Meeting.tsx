@@ -81,7 +81,7 @@ const Meeting = (props: MeetingProps) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#D6E9FE",
+        // backgroundColor: "#D6E9FE",
       }}
     >
       <div style={{ height: tollbarHeight }}>
@@ -147,10 +147,10 @@ const Meeting = (props: MeetingProps) => {
             height: `calc(100vh - ${tollbarHeight}px)`,
           }}
         >
-          <ExternalVideo />
+          {/* <ExternalVideo /> */}
           <Participants />
         </div>
-        <Chat tollbarHeight={tollbarHeight} />
+        {/* <Chat tollbarHeight={tollbarHeight} /> */}
       </div>
     </div>
   );

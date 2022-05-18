@@ -112,7 +112,7 @@ const NewMeeting = () => {
         </Box>
       </Grid>
       <Grid item xs={12} lg={4}>
-        <Box pr={{ xs: 4 }}>
+        <Box pr={{ xs: 6 }}>
           <img src={MEETING_BANNER} alt="MEETING BANNER" className="banner" />
         </Box>
       </Grid>

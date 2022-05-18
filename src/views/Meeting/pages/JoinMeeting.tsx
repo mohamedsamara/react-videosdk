@@ -78,7 +78,7 @@ const JoinMeeting = () => {
         meetingId,
         micEnabled: micOn,
         webcamEnabled: camOn,
-        name: participantName ? participantName : "TestUser",
+        name: participantName,
       }}
       token={token}
       reinitialiseMeetingOnConfigChange={true}

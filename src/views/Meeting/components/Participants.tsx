@@ -7,6 +7,8 @@ import commonStyles from "../../../utils/commonStyles";
 const Participants = () => {
   const { participants } = useMeeting();
 
+  console.log("participants are", participants);
+
   return (
     <div
       style={{
@@ -16,17 +18,9 @@ const Participants = () => {
         padding: commonStyles.borderRadius,
       }}
     >
-      {chunk([...participants.keys()]).map((k) => {
-        console.log("K---", k);
-
-        return (
-          <div style={{ display: "flex" }}>
-            {k.map((l: string) => (
-              <Participant key={l} participantId={l} />
-            ))}
-          </div>
-        );
-      })}
+      {[...participants.keys()].map((p: string) => (
+        <Participant key={p} participantId={p} />
+      ))}
     </div>
   );
 };

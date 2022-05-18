@@ -106,7 +106,6 @@ const Participant = (props: ParticipantProps) => {
       }}
     >
       <audio ref={micRef} autoPlay muted={isLocal} />
-
       <div
         style={{
           position: "relative",
@@ -138,35 +137,16 @@ const Participant = (props: ParticipantProps) => {
           <div
             style={{
               position: "absolute",
-              top: commonStyles.borderRadius,
-              right: commonStyles.borderRadius,
-            }}
-          >
-            <p
-              style={{
-                color: webcamOn ? "green" : "red",
-                fontSize: 16,
-                fontWeight: "bold",
-                opacity: 1,
-              }}
-            >
-              WEB CAM
-            </p>
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
               top: 10,
               left: 10,
             }}
           >
-            <p>{displayName}</p>
+            <p style={{ color: "#fff" }}>{displayName}</p>
           </div>
         </div>
       </div>
 
-      <div
+      {/* <div
         style={{
           marginTop: commonStyles.borderRadius,
           position: "relative",
@@ -214,7 +194,7 @@ const Participant = (props: ParticipantProps) => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
