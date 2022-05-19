@@ -169,9 +169,7 @@ const Join = (props: JoinProps) => {
                     left: 0,
                   }}
                 >
-                  <Typography style={{ color: "#fff" }}>
-                    Camera is Turned Off
-                  </Typography>
+                  <Typography color="#fff">Camera is Turned Off</Typography>
                 </Box>
               ) : null}
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { usePubSub } from "@videosdk.live/react-sdk";
 
 import commonStyles from "../../../utils/commonStyles";
-import Title from "./Title";
 import Messages from "./Messages";
 
 interface ChatProps {
@@ -28,7 +27,7 @@ const Chat = (props: ChatProps) => {
         padding: commonStyles.borderRadius,
       }}
     >
-      <Title title={"Chat"} dark />
+      {/* <Title title={"Chat"} dark /> */}
 
       <div style={{ display: "flex" }}>
         <input

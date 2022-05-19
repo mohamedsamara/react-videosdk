@@ -21,11 +21,8 @@ const JoinMeeting = () => {
     meetingId,
     token,
     started,
-    setCam,
-    setMic,
     setMeetingId,
     setToken,
-    setStarted,
   } = meeting;
 
   const { id } = useParams();
@@ -46,12 +43,6 @@ const JoinMeeting = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const onMeetingLeave = () => {
-    setCam(false);
-    setMic(false);
-    setStarted(false);
   };
 
   const onBack = () => {
@@ -84,7 +75,7 @@ const JoinMeeting = () => {
       reinitialiseMeetingOnConfigChange={true}
       joinWithoutUserInteraction={true}
     >
-      <Meeting onMeetingLeave={onMeetingLeave} />
+      <Meeting />
     </MeetingProvider>
   ) : (
     <Join onBack={onBack} />
