@@ -26,12 +26,7 @@ const Chat = (props: ChatProps) => {
   };
 
   return (
-    <Drawer
-      anchor="right"
-      open={open}
-      onClose={toggleDrawer}
-      className="chat-ui"
-    >
+    <Drawer anchor="right" open={open} onClose={toggleDrawer}>
       <Box width="400px" height="100vh" display="flex" flexDirection="column">
         <Box flex="1" pt={3} px={2} maxHeight="80vh" overflow="scroll">
           <Messages messages={messages} />

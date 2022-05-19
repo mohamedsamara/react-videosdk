@@ -1,22 +1,14 @@
 import { useState } from "react";
-import { useSnapshot } from "valtio";
-import { useMeeting } from "@videosdk.live/react-sdk";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import InputAdornment from "@mui/material/InputAdornment";
 import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
 import { Chat as ChatIcon, People } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
-import { red } from "@mui/material/colors";
 
-import { store } from "../../../lib/store";
 import Chat from "./Chat";
+import Participants from "./Participants";
 
 const useStyles: any = makeStyles(() => ({
   button: {
@@ -30,14 +22,16 @@ const useStyles: any = makeStyles(() => ({
 const MeetingControls = () => {
   const theme = useTheme();
   const styles = useStyles(theme);
-  const { ui } = useSnapshot(store);
 
   const [chatDrawer, setChatDrawer] = useState(false);
+  const [participantsDrawer, setParticipantsDrawer] = useState(false);
 
   const _toggleChat = () => {
     setChatDrawer(!chatDrawer);
   };
-  const _toggleParticipant = () => {};
+  const _toggleParticipants = () => {
+    setParticipantsDrawer(!participantsDrawer);
+  };
 
   return (
     <>
@@ -56,7 +50,7 @@ const MeetingControls = () => {
         <Box mx={1}>
           <Tooltip title="View particpants" arrow placement="top">
             <Button
-              onClick={_toggleParticipant}
+              onClick={_toggleParticipants}
               variant="contained"
               className={styles.button}
             >
@@ -67,6 +61,10 @@ const MeetingControls = () => {
       </Stack>
 
       <Chat open={chatDrawer} toggleDrawer={_toggleChat} />
+      <Participants
+        open={participantsDrawer}
+        toggleDrawer={_toggleParticipants}
+      />
     </>
   );
 };
