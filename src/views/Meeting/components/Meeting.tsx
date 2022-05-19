@@ -7,7 +7,7 @@ interface MeetingProps {}
 
 const Meeting = (props: MeetingProps) => {
   return (
-    <Box bgcolor="#202124" minHeight="100%">
+    <Box bgcolor="#202124" minHeight="100%" className="meeting-page">
       <Me />
 
       <Toolbar />

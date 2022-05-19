@@ -17,7 +17,7 @@ const InvalidMeeting = () => {
   const { ui } = useSnapshot(store);
   if (!ui.invalidMeetingDialog) return null;
 
-  const handleClose = () => {
+  const _handleClose = () => {
     ui.setInvalidMeetingDialog(false);
     navigate({ pathname: `/meeting` });
   };
@@ -25,7 +25,7 @@ const InvalidMeeting = () => {
   return (
     <Dialog
       open={ui.invalidMeetingDialog}
-      onClose={handleClose}
+      onClose={_handleClose}
       aria-labelledby={TITLE}
       aria-describedby={DESCRIPTION}
     >
@@ -36,7 +36,7 @@ const InvalidMeeting = () => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} autoFocus>
+        <Button onClick={_handleClose} autoFocus>
           Ok
         </Button>
       </DialogActions>

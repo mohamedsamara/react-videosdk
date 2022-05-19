@@ -10,12 +10,13 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import { Chat, People } from "@mui/icons-material";
+import { Chat as ChatIcon, People } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import { red } from "@mui/material/colors";
 
 import { store } from "../../../lib/store";
+import Chat from "./Chat";
 
 const useStyles: any = makeStyles(() => ({
   button: {
@@ -31,7 +32,11 @@ const MeetingControls = () => {
   const styles = useStyles(theme);
   const { ui } = useSnapshot(store);
 
-  const _toggleChat = () => {};
+  const [chatDrawer, setChatDrawer] = useState(false);
+
+  const _toggleChat = () => {
+    setChatDrawer(!chatDrawer);
+  };
   const _toggleParticipant = () => {};
 
   return (
@@ -44,7 +49,7 @@ const MeetingControls = () => {
               variant="contained"
               className={styles.button}
             >
-              <Chat />
+              <ChatIcon />
             </Button>
           </Tooltip>
         </Box>
@@ -60,6 +65,8 @@ const MeetingControls = () => {
           </Tooltip>
         </Box>
       </Stack>
+
+      <Chat open={chatDrawer} toggleDrawer={_toggleChat} />
     </>
   );
 };

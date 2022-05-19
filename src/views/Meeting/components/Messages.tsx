@@ -1,51 +1,78 @@
-const Messages = ({ messages }: any) => {
+import { useMeeting } from "@videosdk.live/react-sdk";
+import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
+
+import { formatAMPM } from "../../../utils";
+
+type Message = {
+  id: string;
+  message: string;
+  senderId: string;
+  senderName: string;
+  timestamp: string;
+  topic: string;
+};
+
+interface MessagesProps {
+  messages: Array<Message>;
+}
+
+const Messages = (props: MessagesProps) => {
+  const { messages } = props;
+  const { localParticipant } = useMeeting();
+
   return (
-    <div>
-      {messages?.map((message: any, i: number) => {
-        const { senderName, message: text, timestamp } = message;
+    <>
+      {messages?.map((message: Message) => {
+        const { id, senderName, senderId, message: text, timestamp } = message;
+        const isMe = localParticipant.id === senderId;
 
         return (
-          <div
-            style={{
-              margin: 8,
-              backgroundColor: "darkblue",
-              borderRadius: 8,
-              overflow: "hidden",
-              padding: 8,
-              color: "#fff",
-            }}
-            key={i}
+          <Box
+            key={id}
+            bgcolor={isMe ? "#2196f3" : "#eff2f5"}
+            mb={2}
+            p={2}
+            borderRadius={8}
+            overflow="hidden"
+            width="fit-content"
+            minWidth="100px"
+            className={`m-box ${isMe ? "me" : ""}`}
+            display="flex"
+            flexDirection="column"
+            alignSelf={isMe ? "flex-end" : ""}
+            ml={isMe ? "auto" : "inherit"}
           >
-            <p style={{ margin: 0, padding: 0, fontStyle: "italic" }}>
+            <Typography
+              color={isMe ? "white" : "black"}
+              variant="body1"
+              component="p"
+            >
               {senderName}
-            </p>
-            <h3 style={{ margin: 0, padding: 0, marginTop: 4 }}>{text}</h3>
-            <p
-              style={{
-                margin: 0,
-                padding: 0,
-                opacity: 0.6,
-                marginTop: 4,
-              }}
+            </Typography>
+
+            <Typography
+              color={isMe ? "white" : "black"}
+              variant="body1"
+              component="p"
+              mt={1}
+            >
+              {text}
+            </Typography>
+
+            <Typography
+              color={isMe ? "white" : "black"}
+              variant="body2"
+              component="p"
+              mt={2}
             >
               {formatAMPM(new Date(timestamp))}
-            </p>
-          </div>
+            </Typography>
+          </Box>
         );
       })}
-    </div>
+    </>
   );
 };
 
 export default Messages;
-
-function formatAMPM(date: any) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? "pm" : "am";
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  var strTime = hours + ":" + minutes + " " + ampm;
-  return strTime;
-}

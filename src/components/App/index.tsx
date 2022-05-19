@@ -7,7 +7,7 @@ import {
 
 import JoinMeeting from "../../views/Meeting/pages/JoinMeeting";
 import NewMeeting from "../../views/Meeting/pages/NewMeeting";
-import InvalidMeeting from "../../views/Meeting/components/InvalidMetting";
+import Modals from "../Modals";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/meeting/:id" element={<JoinMeeting />} />
           <Route path="*" element={<Navigate to="/meeting" replace />} />
         </Routes>
-        <InvalidMeeting />
+        <Modals />
       </Router>
     </>
   );
