@@ -38,10 +38,6 @@
   ],
   "author": "Mohamed Samara (https://github.com/mohamedsamara)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mohamedsamara/react-videosdk/issues"
-  },
-  "homepage": "https://github.com/mohamedsamara/react-videosdk#readme",
   "eslintConfig": {
     "extends": [
       "react-app",
