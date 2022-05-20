@@ -1,6 +1,7 @@
 {
-  "name": "my-app",
+  "name": "react-videosdk",
   "version": "0.1.0",
+  "description": "React VideoSDK",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -31,6 +32,16 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "keywords": [
+    "React",
+    "VideoSDK"
+  ],
+  "author": "Mohamed Samara (https://github.com/mohamedsamara)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohamedsamara/react-videosdk/issues"
+  },
+  "homepage": "https://github.com/mohamedsamara/react-videosdk#readme",
   "eslintConfig": {
     "extends": [
       "react-app",
