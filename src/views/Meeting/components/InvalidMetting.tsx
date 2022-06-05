@@ -32,7 +32,7 @@ const InvalidMeeting = () => {
       <DialogTitle id="alert-dialog-title">{TITLE}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          {DESCRIPTION}
+          {ui.invalidMeetingDialogMsg || DESCRIPTION}
         </DialogContentText>
       </DialogContent>
       <DialogActions>

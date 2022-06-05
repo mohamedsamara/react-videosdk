@@ -6,7 +6,6 @@ import "./styles/index.css";
 import theme from "./utils/theme";
 import reportWebVitals from "./reportWebVitals";
 import App from "./components/App";
-// import App from "./app";
 
 const root = document.getElementById("root") as HTMLElement;
 

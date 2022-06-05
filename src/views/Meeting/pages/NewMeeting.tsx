@@ -23,6 +23,12 @@ const NewMeeting = () => {
 
   const onNewMeeting = async () => {
     const token = await getToken();
+    if (!token)
+      return ui.setInvalidMeetingDialog(
+        true,
+        "Please add a token or Auth Server URL"
+      );
+
     const meetingId = await createMeeting({ token });
     setToken(token);
     setMeetingId(meetingId);
@@ -31,6 +37,12 @@ const NewMeeting = () => {
 
   const joinMeeting = async (meetingId: string) => {
     const token = await getToken();
+    if (!token)
+      return ui.setInvalidMeetingDialog(
+        true,
+        "Please add a token or Auth Server URL"
+      );
+
     const valid = await validateMeeting({ meetingId, token });
     if (!valid) return ui.setInvalidMeetingDialog(true);
 
@@ -39,7 +51,7 @@ const NewMeeting = () => {
     navigate({ pathname: `/meeting/${meetingId}` });
   };
 
-  const onJoin = (e: any) => {
+  const onJoin = () => {
     if (meetingId.match("\\w{4}\\-\\w{4}\\-\\w{4}")) joinMeeting(meetingId);
     else setMeetingIdError(true);
   };
